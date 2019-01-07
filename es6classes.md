@@ -2,7 +2,7 @@
 
 A class is just an object in JS. You can describe what values they will have those will be called instance properties. An instance method will be what the class does and typically the method will use the instance properites to achieve their results. By convention you want to use a capital letter when creating a class. 
 
-###### constructor
+##### constructor
 
 Every class has whats called a contructor method and it is only run once during the creation of the object.
 ```javascript 
@@ -18,7 +18,7 @@ const person = new Person();
 ```
 This would log hello to the terminal/console but only when using the new keyword to instantiate the object. 
 
-###### instance properties
+##### instance properties
 You can create instance properties in two ways in JS. One is when they are defined directly in the constructor.
 
 ```javascript 
@@ -61,6 +61,34 @@ const Mike = new Person("Mike", 29, "sad");
 ```
 These two objects would have different this values considering when you use the new keyword it creates a whole new object with a this value attacted to it.
 
+##### instance methods
+
+Like a constructor a instance method is just a function that on inside the class object. They operate just like functions and can be used like function invocations on the class object. In this example 
+
+```javascript
+class Person {
+    constructor(name, age, mood) {
+        this.name = name;
+        this.age = age;
+        this.mood = mood;
+    }
+    
+    sayName() {
+        return `Hello my name is ${this.name}`
+    }
+}
+
+const Joe = new Person("Joe", 30, "happy");
+```
+If you were to call Joe.sayName() it would produce a log of "Hello my name is Joe", which would be completely different depending upon when the Class is first instantiated. If you were to do 
+
+```javascript
+const Chris = new Person("Chris", 30, "happy")
+```
+
+The same method would log "Hello my name is Chris".
+
+##### getters and setters 
 
 
 
