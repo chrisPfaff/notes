@@ -135,6 +135,29 @@ console.log(Joe.ageOfPerson) // 40
 ```
 The Joe.newAge setter can be used just like how object property reassingment syntax works with dot notation. 
 
+##### Static Methods
 
+A static method is a method defined on a class but it is not part of the instantiated object once its been created. It does not require an instance of an object to be used. Most static methods are helper methods or utilities that are relevant to the class but dont have an object bound to them. Like with getters
+and setters you need to use a keyword before defining the method. In this case that keyword would be static like below. Keep in mind when calling a static method you do not need to instantiate the object before invoking the method also you can call the static method directly from the class. 
 
+```javascript
+class Person {
+    constructor(name, age, currentYear) {
+        this.name = name;
+        this.age = age;
+        this.currentYear = currentYear
+    }
+    
+    static reverseName(obj) {
+        return obj.name.split('').reverse().join('');
+    }
+    static isCurrentYear(obj) {
+        obj.currentYear === 2018 ? console.log('Yes') : console.log('No')
+    }
+}
+const chris = new Person('Chris', 30, 2018)
+
+//calling directly from Class but still using an instatiated object
+console.log(Person.reverseName(chris));
+```
 
