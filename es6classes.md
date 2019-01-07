@@ -90,6 +90,51 @@ The same method would log "Hello my name is Chris".
 
 ##### getters and setters 
 
+Getters and setters can be used to define methods on the class which then are used as if they are properties. To define a getter you use the get then the method name just like how you would with a regular method inside a class.
+
+```javscript
+
+class Person {
+    constructor(name, age, currentYear) {
+        this.name = name;
+        this.age = age;
+        this.currentYear
+    }
+    get ageOfPerson() {
+        return this.age;
+    }
+}
+
+const Joe = new Person('Joe', 30, "happy");
+console.log(Joe.ageOfPerson)
+```
+Since the getter acts like a property there is no need to invoke the ageOfPerson method when using it. Joe.ageOfPerson would return 30. 
+
+Setters work pretty much the same way you can assign new values to your instance properties with a property like syntax. 
+
+```javscript
+
+class Person {
+    constructor(name, age, currentYear) {
+        this.name = name;
+        this.age = age;
+        this.currentYear
+    }
+    get ageOfPerson() {
+        return this.age;
+    }
+    set newAge(age) {
+        this.age = age;
+    }
+}
+
+const Joe = new Person('Joe', 30, "happy");
+console.log(Joe.ageOfPerson) // 30
+Joe.newAge = 40;
+console.log(Joe.ageOfPerson) // 40
+```
+The Joe.newAge setter can be used just like how object property reassingment syntax works with dot notation. 
+
 
 
 
