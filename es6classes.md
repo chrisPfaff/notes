@@ -42,6 +42,25 @@ keyword refers to the current object. When typing this it refers to the object b
 * If multiple of the above rules apply, the rule that is higher wins and will set the this value.
 * If the function is an ES2015 arrow function, it ignores all the rules above and receives the this value of its surrounding scope at the time it’s created. To determine this, go one line above the arrow function’s creation and see what the value of this is there. It will be the same in the arrow function.
 
+The more conventional way to create class instance properties is to pass in a value when instatiating the new object. This allows you to make custom classes for whatever values you put in, like making multiple people from one class Person. This is done by putting the the parameters in the constructor function.
+```javascript 
+class Person {
+    constructor(name, age, mood) {
+        this.name = name;
+        this.age = age;
+        this.mood = mood;
+    }
+}
+
+const Joe = new Person('Joe', 30, "happy");
+```
+This would create the same object as if you were instantiating the object with the values hardcoded into the constructor. This allows for multiple objects using the same class. If i were to make a new Person like 
+
+```javascript 
+const Mike = new Person("Mike", 29, "sad");
+```
+These two objects would have different this values considering when you use the new keyword it creates a whole new object with a this value attacted to it.
+
 
 
 
