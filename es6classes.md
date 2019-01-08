@@ -204,4 +204,59 @@ constructor: class Sweet
 howDoITaste: ƒ howDoITaste()
 __proto__: Object
 
+##### polymorphism 
+
+Polymorphism is the act of redefining a method inside a derived child class of a parent. In the example below since Class dog extends animal and they both share a makeSound method when I instantiate Rosie and invoke Rosie.makeSound() it will log "woof woof" instead of "I make this sound". If there was no makeSound method on the Dog class it would go up the prototype chain and find the makeSound method in the Parent class.  
+
+```javascript 
+class Animal {
+    constructor(name) {
+        this.name = name;
+    }
+    makeSound () {
+        console.log(`I make this sound`);
+    }
+}
+class Dog extends Animal {
+    constructor(name) {
+        super(name); //calls parents constructor
+    }
+    makeSound () {
+        console.log('woof woof')
+    }
+}
+
+const Tiger = new Animal('tiger');
+tiger.makeSound(); // I make this sound
+const Rosie = new Dog('rosie');
+Rosie.makeSound();
+```
+##### super
+
+You can also use the super method to achieve polymorphism. In the example below you can use the super method to call a parent method from a derived child class. I put the super method inside the constructor because it will invoke the method anytime I instatiate a new Dog class. You could also put the super.makeSound() inside another method as well. The super keyword allows you to call methods form the parent class.
+
+```javascript 
+class Animal {
+    constructor(name) {
+        this.name = name;
+    }
+    makeSound () {
+        console.log(`I make this sound`);
+    }
+}
+class Dog extends Animal {
+    constructor(name) {
+        super(name); //calls parents constructor
+        super.makeSound()
+    }
+    makeSound () {
+    console.log('woof woof')
+        }
+}
+
+const Tiger = new Animal('tiger');
+tiger.makeSound(); // I make this sound
+const Rosie = new Dog('rosie');
+```
+
 
