@@ -161,3 +161,47 @@ const chris = new Person('Chris', 30, 2018)
 console.log(Person.reverseName(chris));
 ```
 
+##### inhertiance and extends
+
+The extends keyword allows you to achieve inheritance in js classes. This is when you have  parent class and want to create a child class off of that. You use the extends keyword when declaring a new class. In the example below when instantiating the Sweet class it will still have access to the describe method on the Fruit class but the fruit class will not have access to the taste property ot the how to I taste method on the Sweet class.
+
+```javascript 
+//Parent Class
+class Fruit {
+    constructor(name, color) {
+        this.name = name;
+        this.color = color;
+        }
+    describe() {
+        console.log(`I am a ${this.name} and I am ${this.color}`)
+    }    
+}
+    
+class Sweet extends Fruit {
+    constructor(name, color, taste) {
+        //super calls the parent contructor
+        super(name, color);
+        this.taste = taste;
+    }
+    howDoITaste() {
+        return `I taste ${this.taste}`;
+    }
+}
+const Apple = new Fruit('Apple', 'red');
+const Banana = new Sweet('Banana',  'yellow', 'sweet');
+
+console.log(Banana);
+```
+###### This is the log for Banana
+When you log Banana to the console you can see that the __proto__ which points to the original class that Banana has extended from. This is great because you can have one main class and which will share its functionality with any other class that extends off of it but more specific methods or properties can be kept on the other classes.
+
+Sweet {name: "Banana", color: "yellow", taste: "sweet"}
+color: "yellow"
+name: "Banana"
+taste: "sweet"
+__proto__: Fruit
+constructor: class Sweet
+howDoITaste: ƒ howDoITaste()
+__proto__: Object
+
+
