@@ -257,6 +257,33 @@ class Dog extends Animal {
 const Tiger = new Animal('tiger');
 tiger.makeSound(); // I make this sound
 const Rosie = new Dog('rosie');
+
+
+class X {
+  constructor() {
+    this.arr = [];
+  }
+  addToArr(...item) {
+    this.arr.push(...item);
+  }
+  returnArr() {
+    console.log(this.arr);
+  }
+}
+
+class Y extends X {
+  constructor(){
+    super();
+  }
+  newAdd(...item) {
+    super.addToArr(...item)
+  }
+}
+
+const Z = new Y();
+Z.newAdd('Chris');
+Z.newAdd(1, 3, 4)
+Z.returnArr();
 ```
 
 
