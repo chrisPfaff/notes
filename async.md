@@ -20,24 +20,23 @@ If you were to call this function with the await keyword in front of it the code
 }
 ```
 
-When handling errors in Async functions the best way to go about it is to wrap what ever await function in a try and catch block. 
+When handling errors in Async functions the best way to go about it is to wrap what ever await function in a try and catch block. The try catch block is so important because if you have multiple async functions that run sequentialy one can fail and the other will continue. This would only be the case if the multiple awaits were inside a try block. If the second await fetch had the wrong api endpoint the first would still work. 
 
 ```javascript 
-const fetch = require('node-fetch');
-
 const doSomethingAsync = async () => {
   try {
-    const getData = await fetch('https://jsonplaceholder.typicode.com/todos/1')
+    await fetch('https://jsonplaceholder.typicode.com/todos/1')
   .then(response => response.json())
   .then(json => console.log(json))
-  return getData;
+    await fetch('https://jsonplaceholder.typicode.com/todos/2')
+  .then(response => response.json())
+  .then(json => console.log(json))
   } catch(err) {
     console.log('eeeerrrrorr');
   }
 }
 
 doSomethingAsync();
-
-
 ```
+
 
