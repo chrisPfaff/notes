@@ -91,6 +91,29 @@ sammys.forEach((sandwhich, index) => {
 })
 ```
 
+# Classes 
+## How to add, remove, toggle and check for classes on an element.
+
+### classList
+
+The classList API works very similar to jquerys class manipulation functions.
+
+```javscript
+const elem = document.querySelector('#some-elem');
+
+elem.classList.add('.new-class');
+
+elem.classList.remove('.diff-class');
+
+elem.classList.toggle('.action-class'); //add class if its not a class remove if //it is
+
+if(elem.classList.contains('.this-class')) {
+    //do something
+}
+```
+
+
+
 
 
 
