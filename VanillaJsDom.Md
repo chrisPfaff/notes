@@ -73,7 +73,38 @@ if(elem.matches('.some-class')) {
 
 # A word about selector performace
 Selectors that target a specific elemtn type, like get elementById() and getElementsByClassName(), are more than twice as fast as querySelector() and querySelectorAll(). But its not as bad as it sounds. Yes getElementById and ByClassName are faster but the flexibilty and consistency of querySelector() and querySelectorAll() make them the obvious muscle memory choice for projects.
-They are not slow just not as fast
+They are not slow just not as fas
+
+
+
+# Iterating through a NodeList
+
+#### NodeList.forEach()
+
+es6 intoduced a new forEach() method for looping over NodeLsts. It works exactly the same as Array.forEach()
+
+```javascript
+const sammys = document.querySelectorAll('.sandwhich');
+
+sammys.forEach((sandwhich, index) => {
+    console.log(sandwhich) // nodeList value
+})
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
