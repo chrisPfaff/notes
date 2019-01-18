@@ -21,6 +21,61 @@ const elem = document.querySelector('div');
 //will grab first div
 const elemRed = document.querySelector('.redElem');
 //the first element with the class .redElem
+
+// Verify element exists before doing anything with it
+if (elemRed) {
+// Do something...
+}
+
+//helper function 
+var getElem = function (selector) {
+return document.querySelector(selector) || document.c
+reateElement('_');
+};
 ```
+#### getElementByid()
+Use to get an element by its id
+
+#### getElementsByClassName()
+
+Use getElementsByClassName() to find all the elements on the page that have a specific class or classes.
+Note: This returns a live HTMLCollection of elements. If an element is added or removed from the DOM after you set your variable, the list is automatically updated to reflect the current DOM.
+```javascript
+const elemsByClass = document.getElementsByClassName('some-class');
+//Get elements with a class
+
+const elemsWithMultipleClasses = document.getElementsByClassName('some-class another-class')
+```
+
+#### getElementsByTagName()
+
+Use get elementsByTagName() to get all the elements that have a specific tag name.
+Note: This returns a live HTMLCollection of elements. If an element is added or removed from the DOM after you set your variable, the list is automatically updated to reflect the current DOM.
+```javascript
+const divs - document.getElementsByTagName('div')
+//will get all divs
+const paras = document.getElementsByTagName('p')
+//will get all paragraphs
+```
+
+#### matches()
+
+Use matches() to check if an element would be selected by a particular selector or set of selectors. Returns true if the element is a match and false when its not.
+###### only works for dom elements
+```javscript 
+const elem = document.querySelector(".some-elem")
+if(elem.matches('.some-class')) {
+    console.log('its a match');
+} else {
+    console.log('Not a match')
+}
+```
+
+# A word about selector performace
+Selectors that target a specific elemtn type, like get elementById() and getElementsByClassName(), are more than twice as fast as querySelector() and querySelectorAll(). But its not as bad as it sounds. Yes getElementById and ByClassName are faster but the flexibilty and consistency of querySelector() and querySelectorAll() make them the obvious muscle memory choice for projects.
+They are not slow just not as fast
+
+
+
 
 
