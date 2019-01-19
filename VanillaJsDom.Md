@@ -112,6 +112,100 @@ if(elem.classList.contains('.this-class')) {
 }
 ```
 
+#### className
+You can use clasName to get all of the classes on an element as a STRING, add a class or classes, or completely replace of remove all classes.
+
+```javascript
+const elem = document.querySelector('div');
+
+const elemClasses = elem.className;
+
+elem.className += ' new-class'; //add space in front
+
+elem.className = "new-class"; //will replace all classes and only have new one
+```
+
+# Attributes
+### getAttribute(), setAttribute(), removeAttribute() and hasAttribute()
+
+The getAttribute(), setAttribute(), removeAttribute() and hasAttribute() methods let you get, set, remove and check for the existance of attributes on an element
+
+
+
+```javascript
+const elem = document.querySelector('#some-elem');
+
+let sammy = elem.getAttribute('data-sandwhich');
+
+elem.setAttribute('data-sandwhich', 'turkey');
+elem.setAttribute('class', 'turkey') 
+
+elem.removeAttribute('data-sandwhich');
+
+if(elem.hasAttribute('data-sandwhich')) {
+    //do something
+}
+```
+These methods can also be used to manipulate other types of attributes (things like id, tabindex, name, and so on), but these are better done by calling the attribute on the element directly (see below). Older versions of IE don’t always expose attribute properties. While using getAttribute(), setAttribute(), and so on is more verbose, it also ensures the broadest browser compatibility. I prefer to use them whenever possible.
+
+#### Attribute Properties
+```javascript
+const elem = document.querySelector( '#some-elem' );
+// Get attributes
+const id = elem.id;
+const name = elem.name;
+const tabindex = elem.tabindex;
+// Set attributes
+elem.id = 'new-id';
+elem.title = 'The title for this thing is awesome!';
+elem.tabIndex = '-1';
+// Remove attributes
+elem.id = '';
+elem.title = '';
+elem.name = '';
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
