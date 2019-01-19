@@ -75,6 +75,67 @@ div.style.color = '#fff';
 div.style.backgroundColor = 'rebeccapurple';
 ```
 
+#### insertBefore()
+
+The insertBefore() method is the original way to add elements to the DOM. Call it on the parent of the element you're inserting your new element before (the reference node), and pass in both the new element and the reference node as arguments.
+```javascript
+//create new element
+let newNode = document.createElement('div');
+
+//get the referenceNode
+let referenceNode = document.getElementById('some-element')
+
+//insert the new node before the referenceNode
+referenceNode.parentNode.insertBefore(newNode, referenceNode);
+```
+Oddly you can also use it to inject and element after another one by using the .nextSibling property on your reference node
+
+```javascript
+//create new element
+let newNode = document.createElement('div');
+
+//get reference node
+let referenceNode = document.getElementById('some-elem');
+
+//Insert the new node after the referenceNode
+referenceNode.parentNode.insertBefore(newNode, referenceNode.nextSibling);
+```
+
+#### before()
+
+The before() method is a new es6 function that let's you insert an element before another one. Call the before() method on the reference node, and pass in the new node as an argument.
+
+```javascript
+//create new elem
+const newNode = document.createElement('div');
+
+//grab the referenceNode
+let referenceNode = document.querySelector('some-elem');
+
+//insert new node before the reference node
+reference.before(newNode)
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
