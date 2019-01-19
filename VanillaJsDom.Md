@@ -4,7 +4,7 @@
 
 Use document.querySelectorAll() to find matching elements on a page. You can use and valid CSS selector. Will return a nodeList.
 
-```javscript 
+```javascript 
 const elemsRed = document.querySelectorAll('.redElems');
 //returns a nodeList of all elemetns with th redElems class
 
@@ -62,7 +62,7 @@ const paras = document.getElementsByTagName('p')
 
 Use matches() to check if an element would be selected by a particular selector or set of selectors. Returns true if the element is a match and false when its not.
 ###### only works for dom elements
-```javscript 
+```javascript 
 const elem = document.querySelector(".some-elem")
 if(elem.matches('.some-class')) {
     console.log('its a match');
@@ -98,7 +98,7 @@ sammys.forEach((sandwhich, index) => {
 
 The classList API works very similar to jquerys class manipulation functions.
 
-```javscript
+```javascript
 const elem = document.querySelector('#some-elem');
 
 elem.classList.add('.new-class');
@@ -163,6 +163,77 @@ elem.tabIndex = '-1';
 elem.id = '';
 elem.title = '';
 elem.name = '';
+```
+
+# Event Listeners
+How to listen for browser evens and run a callback function when they happen.
+
+#### addEventListener()
+
+use addEventListner to listen for evens on an element. 
+```javascript
+const btn = document.querySelector('#main-btn');
+btn.addEvenListner('click', function(event) {
+    console.log(event);
+    console.log(event.target) //the clicked element
+}, false)
+```
+
+##### Multiple Targets
+
+The vanilla JavaScript addEventListener() function requires you to pass in a specific, individual element to listen to. You cannot pass in an
+array or node list of matching elements like you might in jQuery or other frameworks.
+To add the same event listener to multiple elements, you also cannot just use a for loop because of how the i variable is scoped (as in, it’s not and changes with each loop).
+Fortunately, there’s a really easy way to get a jQuery-like experience: event bubbling.
+Instead of listening to specific elements, we’ll instead listen for all clicks on a page, and then check to see if the clicked item has a matching selector.
+
+```javascript
+window.addEventListener('click', function(event){
+    if(event.target.classList.contaiens('click-me')){
+        //do something
+    }
+}, false);
+```
+##### multiple events
+
+In vanilla JS, each eent type requires its own even listener. Unfortunately, you can't pass multple events to a single listener like you might in other frameworks. But... by using a named function and passing that into your event listener, you can avoid having to write the same code over and over again.
+
+```javascript
+const someFunction = function(event) {
+    //do something
+}
+
+//add event listners 
+window.addEventListener('click', someFunction, false)
+window.addEventListener('scroll', someFunction, false)
+```
+
+# Event Debouncing
+
+Events like scroll and resize can cause huge performance issues on
+certain browsers. Paul Irish explains:12
+If you’ve ever attached an event handler to the window’s resize event, you have probably noticed that while Firefox fires the event slow and sensibly, IE and Webkit go totally spastic.
+Debouncing is a way of forcing an event listener to wait a certain period of time before firing again. To use this approach, we’ll setup a timeout element. This is used as a counter to tell us how long it’s been since the event was last run.
+When our event fires, if timeout has no value, we’ll assign a setTimeout function that expires after 66ms and contains our the methods we want to run on the event. If it’s been less than 66ms from when the last event ran, nothing else will happen.
+
+```javascript
+//set up timer
+let timeout;
+
+//listen for resize events
+window.addEventListener('resize', function(even){
+    console.log('no debounce')
+    // If timer is null, reset it to 66ms and run your functions.
+    // Otherwise, wait until timer is cleared
+if (!timeout) {
+timeout = setTimeout(function() {
+            // Reset timeout
+timeout = null;
+// Run our resize functions
+            console.log('debounced');
+        }, 66);
+
+}, false)
 ```
 
 
