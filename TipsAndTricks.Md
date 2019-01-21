@@ -253,6 +253,8 @@ class Counter extends React.Component {
 ```
 Currently, class properties are not part of the official spec, but is at stage-3 as an experimental feature. You have to add @babel/plugin-proposal-class-properties in your babelrc to use it.
 
+# User parcel
+As a frontend developer, you almost certainly have encountered bundling and transpiling code. The de-facto standard for this was webpack for a long time. I first used webpack in version 1, which was a pain back then. Fiddling with all the different configuration options, I spent countless hours trying to get the bundling up and running. If I was able to do so, I wouldn’t touch it again in order not to break anything. A couple of months ago I came across parcel, which was an instant relief. It does pretty much everything for you out of the box, while still giving you the possibility to change it, if necessary. It also supports a plugin system, similar to webpack or babel and is incredibly fast. If you don’t know parcel, I definitely suggest you check it out!
 
 
 
