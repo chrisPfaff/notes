@@ -172,6 +172,50 @@ Note that when checking for truthy / falsy values, there is no explicit comparis
 
 # Logical and ternary operators
 
+These are, again used to shorten your code, saving you precious lines of code. Often times they are nice tools and help keep your code clean, but they can also create some confusion, especially when chaining them.
+
+### logical operators
+The logical operators basically combine two expressions and will return either `true`, `false` or the matching value and are represented by `&&`, meaning "and" as well as `||` meaning or.
+
+```javascript
+console.log(true && true) // true
+console.log(false && true) // false
+console.log(true && false) // false
+console.log(false && false) // false
+console.log(true || true) // true
+console.log(true || false) // true
+console.log(false || true) // true
+console.log(false || false) // false
+```
+
+We can combine logical operators with our knowlege form the last point, truthy and falsey values. When using logical operators, the following rules apply:
+
+* `&&` : The first falsey value gets returned, if there us none, the last truthy value is being returned
+* `||`: The first truthy value gets returned, if there is none, the operation will equal to the last falsy value.
+
+```javascript
+console.log(0 && {a: 1}) // 0
+console.log(false && 'a') // false
+console.log('2' && 5) // 5
+console.log([] || false) // []
+console.log(NaN || null) // null
+console.log(true || 'a') // true
+```
+
+### Ternary operator
+
+The ternary operator is very similiar tot he logical operator, but has three parts in order: 
+* The comparison, which will either be falsy or truthy
+* The first return value, in case the comparision is truthy
+* The second return value, in case the comparison is falsy
+
+```javascript
+const lang = 'German'
+console.log(lang === 'German' ? 'Hallo' : 'Hello') // Hallo
+console.log(lang ? 'Ja' : 'Yes') // Ja
+console.log(lang === 'French' ? 'Bon soir' : 'Good evening') // Good eveing
+```
+
 
 
 
