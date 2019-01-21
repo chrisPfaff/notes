@@ -216,6 +216,42 @@ console.log(lang ? 'Ja' : 'Yes') // Ja
 console.log(lang === 'French' ? 'Bon soir' : 'Good evening') // Good eveing
 ```
 
+# optional chaining
+To solve the problem of accesing a nested object property, withouth knowing ig the object or one of the sub-properties even exists you can do optional chaning. Something that would look like this
+```javascript
+let data
+if(myObj && myObj.firstProp && myObj.firstProp.secondProp && myObj.firstProp.secondProp.actualData) data = myObj.firstProp.secondProp.actualData
+```
+Can be made to look like this
+```javascript
+const data = myObj?.firstProp?.secondProp?.actualData
+```
+Currently this is not part of the spec and is only avaliable if you add babel-plugin-proposal-optional-chaining in the babelrc
+
+# Class properties and binding
+Binding functions in Javascript is a common task. With the introduction of arrow functions in the es6 spec, we now have a way to automatially `bind functions to the declaration context` very useful and commonly used amongst Javascript devs. When classes were first introduced, you could no longer really use arrow functions because class methods have to be declared in a specific way. We needed to bind functions elsewhere, for example in the constructor(best practice with React). I was always bugged by the workflow of first defining a class methods then binding them. It just seems rediculous after a while. With the class property syntax, we can use arrow functions again and get the advantages of auto-binding. Arrow function can now be used inside the class. Here is an example.
+```javascript
+class Counter extends React.Component {
+    constructor(props) {
+        super(props)
+        this.state = { count: 0 }
+    }
+    
+    render() {
+        return(
+            <div>
+                <h1>{this.state.count}</h1>  
+                <button onClick={this._increaseCount}>Increase Count</button>
+            </div>
+        )
+    }
+    
+    _increaseCount = () => {
+        this.setState({ count: this.state.count + 1 })
+    }
+}
+```
+Currently, class properties are not part of the official spec, but is at stage-3 as an experimental feature. You have to add @babel/plugin-proposal-class-properties in your babelrc to use it.
 
 
 
