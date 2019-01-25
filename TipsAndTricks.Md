@@ -380,6 +380,47 @@ If you want to read more about the spread and rest operator, I suggest you read 
 
 # Finally 
 
+Promises have become a huge thing in JavaScript.
+As the entirety of this topic is beyond the scope of this article, I want to focus on a new function; finally() that has been added to JavaScript Promises as an instance method and can be used in extension with then().catch()
+
+finally() is called without any value and is called regardless of a promise being resolved or rejected. That is, it is executed no matter what.
+
+```javascript
+const aPromise = new Promise((resolve, reject) => resolve("alles gut"));
+
+aPromise
+  .then(res => console.log(res)) // alles gut
+  .catch(err => console.log(err))
+  .finally(() => {
+    // This is always executed!
+  });
+```
+```javascript
+const aPromise = new Promise((resolve, reject) => reject("uhff"));
+
+const resolveThePromise = async () => {
+  try {
+    const msg = await aPromise;
+    console.log(msg); 
+  } 
+  catch(err) {
+    console.log(err); // uhff
+  }
+  finally {
+    // this is still always executed!
+  }
+}
+
+resolveThePromise();
+```
+
+
+
+
+
+
+
+
 
 
 
