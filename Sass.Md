@@ -9,3 +9,18 @@ You can also watch certain files with the `--watch` flag. This will all for file
 `sass --watch app/sass:public/stylesheets` this will watch all files in the `app/sass` folder and compile to `public/stylesheets` folder
 
 ### Variables
+
+Variables like in Js or any other programming language are a way to store information. In Sass you can store things like colors, font stacks and themes. Sass uses the `$` symbol to make something a variable.
+
+```scss 
+$font-stack: Helvetica, sans-serif;
+$primary-color: #333;
+
+body {
+    font: $font-stack;
+    color: $primary-color;
+}
+```
+
+When the Sass is processed, it takes the variables we define for the `$font-stack` and `$primary-color` and outputs normal CSS with our variable values placed in the CSS. This can be extremely powerful when working with brand colors and keeping them consistent throughout the site.
+
