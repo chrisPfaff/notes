@@ -24,3 +24,56 @@ body {
 
 When the Sass is processed, it takes the variables we define for the `$font-stack` and `$primary-color` and outputs normal CSS with our variable values placed in the CSS. This can be extremely powerful when working with brand colors and keeping them consistent throughout the site.
 
+### Nesting
+When writing HTML you have probably noticed its clear visual heirarchy. Css on the other hand doesnt. Sass will let you nest your Css selectors in a way that follows the same visual hierachy of your HTML. Be aware that overly nested rules will result in over-qualified css that could prove hard to maintain and is considered bad practice. An example of this would be 
+```scss
+nav {
+  ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  li { display: inline-block; }
+
+  a {
+    display: block;
+    padding: 6px 12px;
+    text-decoration: none;
+  }
+}
+```
+You'll notice that the `ul`, `li`, and a selectors are nested inside the nav selector. This is a great way to organize your CSS and make it more readable.
+
+### Bem Nesting
+
+The best thing about the ability of nesting in sass is when you use the Bem naming conventions. Bem stands for Block element modifier I will not go into detail about it here but its almost like nesting class names and example would be.
+```html
+<form class="form form--theme-xmas form--simple">
+  <input class="form__input" type="text" />
+  <input
+    class="form__submit form__submit--disabled"
+    type="submit" />
+</form>
+```
+See how there is a main form class called `form` and the nested classes are all labled with `form` and two underscores then a more detailed name. This is the Bem naming convention. With Sass you can make nesting look even better when using this naming convention and example of this code block using Sass would be.
+
+```scss
+.form {
+    &__input {
+        color: red
+    }
+    &__submit {
+        font-size: 16px;
+    }
+}
+```
+
+With including the `&` and the `__` It is an easier way to nest the Sass. 
+
+
+
+
+
+
+
