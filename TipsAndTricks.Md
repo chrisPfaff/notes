@@ -256,6 +256,138 @@ Currently, class properties are not part of the official spec, but is at stage-3
 # User parcel
 As a frontend developer, you almost certainly have encountered bundling and transpiling code. The de-facto standard for this was webpack for a long time. I first used webpack in version 1, which was a pain back then. Fiddling with all the different configuration options, I spent countless hours trying to get the bundling up and running. If I was able to do so, I wouldn’t touch it again in order not to break anything. A couple of months ago I came across parcel, which was an instant relief. It does pretty much everything for you out of the box, while still giving you the possibility to change it, if necessary. It also supports a plugin system, similar to webpack or babel and is incredibly fast. If you don’t know parcel, I definitely suggest you check it out!
 
+#Truthy/falsey boolean conversion 
+In JavaScript, any value can be evaluated in a boolean context.
+If a value is evaluated to true it is said to be truthy and falsy otherwise.
+The following values will always be evaluated to false in a boolean context.
+
+* false
+* null
+* undefined 
+* 0
+* '', " "
+* NaN
+
+Anything else will be evaluated to true in a boolean context.
+
+Sometimes we want to convert a value that is not a boolean, into a boolean.
+We can accomplish that using the !! operator.
+
+```javascript
+!!null // false
+!!undefined // false
+!!NaN // false
+!!"" // false
+!!0 // false
+
+!!1 // true
+!!{} // true
+!![] // true
+!!"hi, mom" // true
+```
+
+# Object.entries
+
+Maybe you were already aware that you can use Object.keys() to return a list containing the key-names of an object.
+This is handy when you want to iterate through an object like so
+```javascript
+const obj = {
+  msg: "hi",
+  to: "mom",
+  year: 2019
+}
+
+Object.keys(obj).forEach(k => {
+  console.log(k);
+});
+
+// 'msg'
+// 'to'
+// 'year'
+```
+
+But you might not be aware that you can use Object.entries() to return a list of entries containing both the key-name and the value of an object.
+
+```javascript
+const obj = {
+  msg: "hi",
+  to: "mom",
+  year: 2019
+}
+
+Object.entries(obj).forEach(([k, v]) => {
+  console.log(k + " : " + v);
+});
+
+// 'msg : hi'
+// 'to : mom'
+// 'year : 2019'
+```
+
+If you didn’t figure it out yourself already, you can of course also return a list containing only the values, by using Object.values() like so
+```javascript
+const obj = {
+  msg: "hi",
+  to: "mom",
+  year: 2019
+}
+
+Object.values(obj).forEach(v => {
+  console.log(v);
+});
+
+// 'hi'
+// 'mom'
+// '2019'
+```
+
+# Rest and Spread with Objects
+
+In ES6, the rest and spread operator was introduced.
+They have very different effects, but are both used by setting three dots ...
+
+* Spread operator allow iterables to be expanded into single arguments/element.
+* Rest operator collects all remaining elements into an iterable.
+
+The rest operator can be applied to arrays as well as objects, and this can be a strong tool when used correctly.
+
+By combining destructuring and the rest operator on objects, we can easily extract wanted properties from an object, leaving the remaining properties in an object for itself.
+
+```javascript
+const obj = {
+  msg: "hi",
+  to: "mom",
+  year: 2019,
+  seen: false,
+}
+
+const { year, ...remainingObj } = obj;
+
+console.log(year);
+// 2019
+
+console.log(remainingObj); 
+// {
+//  msg: 'hi',
+//  seen: false,
+//  to: 'mom'
+// }
+```
+This is also really handy when we want to clean certain properties from an object.
+No need for iterating through the whole object and creating a new clean object.
+
+If you want to read more about the spread and rest operator, I suggest you read the article: Recursion in JavaScript with ES6, destructuring and rest/spread by Hugo Di Francesco.
+
+# Finally 
+
+
+
+
+
+
+
+
+
 
 
 
