@@ -56,4 +56,35 @@ class Square extends Component {
 #### DONT: Cause Side-effects
 ____
 
+##### Render
+
+```Render``` is the workhorse of the React Component, it returns the JSX of your actual component. 
+```javascript
+class Rectangle extends Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            width: 0
+            height: 0
+        }
+    }
+    static getDerivedStateFromProps(props, state) {
+        return {width: 20, height: 10}
+    }
+    render() {
+        return (
+        <h1>Rectangle Dimensions</h1>
+        <p>`This rectangle is ${this.state.width} inchdes wide and ${this.state.height} inches tall`
+        </p>
+        )
+    }
+}
+```
+This React component would just output a ```h1``` tag as well as a ```p``` tag that had some text based on the state of the component
+
+#### DO: Prepare and Structure your JSX
+
+_____
+
+
 
