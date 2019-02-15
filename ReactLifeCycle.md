@@ -1,7 +1,8 @@
 # React Life Cycle Methods
 
-#### Mounting
+#### Mounting in Order
 
+##### Constructor
 Just like with using es6 classes the first thing that gets called in a React class is the ```constructor``` this does not apply to functional components. A constructor should look like this.
 ```javascript
 class App extends Component {
@@ -30,3 +31,29 @@ class App extends Component {
     }
 }
 ```
+You will also need a constructor if you are going to use a ```ref``` as well. 
+#### DO: Set Up State
+#### DONT: Cause Side Effects
+____
+
+##### getDerivedStateFromProps
+
+When mounting ```getDerivedStateFromProps``` is the last method called before ```render``` . The ```getDerivedStateFromProps``` method is used to set the State of something before the component is mounted and updated. You can also use the constructor to set the state from props but this way is more intuitive. The most common use for this is return a state based object on the intial props.
+```javascript 
+class Square extends Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            tiles: 0
+        }
+    }
+    static getDerivedStateFromProps(props, state) {
+        return {titles: someMethod(props.numberOfTiles)}
+    }
+}
+```
+#### DO: Sync state to Props
+#### DONT: Cause Side-effects
+____
+
+
